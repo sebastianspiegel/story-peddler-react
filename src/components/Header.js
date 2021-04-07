@@ -1,3 +1,6 @@
+import LoginButton from './Login'
+import LogoutButton from './Logout'
+
 export default function Header(){
     return(
         <div>
@@ -19,7 +22,8 @@ export default function Header(){
                         </li>
                     </ul>
                     <li className="form-inline my-2 my-lg-0">
-                        <a className="nav-link" href="">Login</a>
+                        <LoginButton />
+                        <LogoutButton />
                     </li>
                 </div>
             </nav>
