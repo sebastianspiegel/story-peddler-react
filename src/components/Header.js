@@ -22,7 +22,7 @@ export default function Header(){
                         </li>
                     </ul>
                     <li className="form-inline my-2 my-lg-0">
-                        <LoginButton />
+                        <button type="button" className="btn btn-outline-primary">Login</button>
                         <LogoutButton />
                     </li>
                 </div>
