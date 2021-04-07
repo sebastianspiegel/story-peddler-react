@@ -18,6 +18,9 @@ export default function Header(){
                             <a className="nav-link" href="">Create a New Plot Point</a>
                         </li>
                     </ul>
+                    <li className="form-inline my-2 my-lg-0">
+                        <a className="nav-link" href="">Login</a>
+                    </li>
                 </div>
             </nav>
             <blockquote className="blockquote text-center">
