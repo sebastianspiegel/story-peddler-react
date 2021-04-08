@@ -1,21 +1,29 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios'
 import Header from './components/Header'
 import ShowStory from './components/Show-Story'
 import StoryContainer from './containers/storycontainer'
 
-function App() {
+export default class App extends React.Component{
 
-  const [token, setToken] = useState();
+  state = {
+    isLoggedIn: false,
+    user: {}
+  }
 
-  return (
-    <div className="App">
-      <Header/>
-      <StoryContainer />
-      {/* <ShowStory/> */}
-    </div>
-  );
+  render(){
+    return(
+      <div>
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            
+          </Switch>
+        </BrowserRouter>
+      </div>
+    )
+  }
+
 }
-
-export default App;
