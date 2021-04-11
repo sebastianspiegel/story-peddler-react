@@ -18,6 +18,40 @@ export default class Signup extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const {username, password, password_confirmation} = this.state
+        let user = {
+            username: username,
+            password: password,
+            password_confirmation: password_confirmation
+        }
+        axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+        .then(resp => {
+            if (resp.data.status === 'created'){
+                this.props.handleLogin(resp.data)
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: resp.data.errors
+                })
+            }
+        })
+        .catch(error => console.log('api errors:', error))
+    }
+
+    redirect = () => {
+        this.props.history.push('/')
+    }
+
+    handleErrors = () => {
+        return (
+            <div>
+                <ul>
+                    {this.state.erros.map(error => {
+                        return <li key={error}>{error}</li>
+                    })}
+                </ul>
+            </div>
+        )
     }
 
     render(){
