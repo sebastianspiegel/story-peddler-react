@@ -25,7 +25,41 @@ export default class Login extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
+        const {username, password} = this.state
+        let user = {
+            username: username,
+            password: password
+        }
+        axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+        .then(resp => {
+            if (resp.data.logged_in){
+                this.props.handleLogin(resp.data)
+                this.redirect()
+            } else {
+                this.setState({
+                    errors: resp.data.erros
+                })
+            }
+        })
+        .catch(error => console.log('api errors:', error))
     }
+
+    redirect = () => {
+        this.props.history.push('/')
+    }
+
+    handleErrors = () => {
+        return (
+            <div>
+                <ul>
+                    {this.state.erros.map(error => {
+                        return <li key={error}>{error}</li>
+                    })}
+                </ul>
+            </div>
+        )
+    }
+
 
     render(){
         return(
