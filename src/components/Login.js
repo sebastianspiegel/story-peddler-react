@@ -28,13 +28,15 @@ export default class Login extends React.Component{
     }
 
     render(){
-        <div>
-            <form onSubmit={this.handleSubmit}>
-            Username: <input type="text" value={this.state.username} onChange={this.handleChange} />
-            Password: <input type="password" value={this.state.password} onChange={this.handleChange} />
-            <input type="submit" value="Log In" />
-            or <Link to='/signup'>Sign Up</Link>
-            </form>
-        </div>
+        return(
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                Username: <input type="text" value={this.state.username} onChange={this.handleChange} />
+                Password: <input type="password" value={this.state.password} onChange={this.handleChange} />
+                <input type="submit" value="Log In" />
+                or <Link to='/signup'>Sign Up</Link>
+                </form>
+            </div>
+        )
     }
 }
