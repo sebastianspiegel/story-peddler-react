@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { Redirect } from "react-router";
 
 export default class Login extends React.Component{
     state = {
@@ -35,10 +36,20 @@ export default class Login extends React.Component{
             }
         })
         .catch(error => console.log('api errors:', error))
+        this.setRedirect()
     }
 
-    redirect = () => {
-        this.props.history.push('/')
+    setRedirect = () => {
+        this.setState({
+            ...this.state,
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/' />
+        }
     }
 
     handleErrors = () => {
@@ -57,8 +68,8 @@ export default class Login extends React.Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                Username: <input type="text" value={this.state.username} onChange={this.handleChange} />
-                Password: <input type="password" value={this.state.password} onChange={this.handleChange} />
+                Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} /><br/>
+                Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /><br/>
                 <input type="submit" value="Log In" />
                 or <Link to='/signup'>Sign Up</Link>
                 </form>
