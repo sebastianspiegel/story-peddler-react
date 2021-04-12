@@ -5,6 +5,10 @@ import axios from 'axios'
 import Header from './components/Header'
 import ShowStory from './components/Show-Story'
 import StoryContainer from './containers/storycontainer'
+import Login from './components/Login'
+import Logout from './components/Logout'
+import Signup from './components/Signup'
+import Home from './components/Home'
 
 export default class App extends React.Component{
 
@@ -50,8 +54,9 @@ export default class App extends React.Component{
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path='/login' component={} />
-            <Route exact path='/signup' component={} />
+            <Route path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
           </Switch>
         </BrowserRouter>
       </div>

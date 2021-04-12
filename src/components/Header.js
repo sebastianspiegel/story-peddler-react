@@ -22,8 +22,8 @@ export default function Header(){
                         </li>
                     </ul>
                     <li className="form-inline my-2 my-lg-0">
-                        <button type="button" className="btn btn-outline-primary">Login</button>
-                        <LogoutButton />
+                        {/* <button type="button" className="btn btn-outline-primary">Login</button>
+                        <LogoutButton /> */}
                     </li>
                 </div>
             </nav>

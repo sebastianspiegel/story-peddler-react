@@ -1,13 +1,6 @@
 import React from "react";
-
-
-// export default function LoginForm(){
-//     <form>
-//     Name: <input type="text"/>
-//     Password: <input type="password" />
-//     <input type="submit" />
-// </form>
-// }
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Login extends React.Component{
     state = {
