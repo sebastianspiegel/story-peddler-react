@@ -24,11 +24,10 @@ export default class Login extends React.Component{
             username: username,
             password: password
         }
-        axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+        axios.post('http://localhost:3001/login', {user})
         .then(resp => {
             if (resp.data.logged_in){
                 this.props.handleLogin(resp.data)
-                this.redirect()
             } else {
                 this.setState({
                     errors: resp.data.erros
@@ -67,6 +66,7 @@ export default class Login extends React.Component{
     render(){
         return(
             <div>
+                {this.renderRedirect()}
                 <form onSubmit={this.handleSubmit}>
                 Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} /><br/>
                 Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /><br/>
