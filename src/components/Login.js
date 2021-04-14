@@ -20,11 +20,21 @@ export default class Login extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         const {username, password} = this.state
-        let user = {
-            username: username,
-            password: password
+        const userInfo = {
+            user: {
+                username: username,
+                password: password
+            }
         }
-        axios.post('http://localhost:3001/login', {user})
+        const configObj = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        }
+        fetch('http://localhost:3001/login', configObj)
         .then(resp => {
             if (resp.data.logged_in){
                 this.props.handleLogin(resp.data)
