@@ -1,4 +1,5 @@
 import React from "react";
+import NewStory from '../components/New-Story'
 
 export default class StoryContainer extends React.Component{
 
@@ -8,10 +9,14 @@ export default class StoryContainer extends React.Component{
         .then(json => console.log(json))
     }
 
+    handleChange = () => {
+
+    }
+
     render(){
         return(
             <div>
-                {this.getStories()}
+                <NewStory handleChange={this.handleChange} />
             </div>
         )
     }

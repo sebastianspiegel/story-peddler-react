@@ -18,7 +18,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount() {
-    this.loginStatus()
+    // this.loginStatus()
   }
 
   handleLogin = (data) => {
@@ -61,6 +61,7 @@ export default class App extends React.Component{
               <Login handleLogin={this.handleLogin} />
             </Route>
             <Route exact path='/signup' component={Signup} />
+            <Route path="/stories" component={StoryContainer} />
           </Switch>
         </BrowserRouter>
       </div>
