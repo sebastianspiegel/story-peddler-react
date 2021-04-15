@@ -35,16 +35,17 @@ export default class Login extends React.Component{
             body: JSON.stringify(userInfo)
         }
         fetch('http://localhost:3001/login', configObj)
-        .then(resp => {
-            if (resp.data.logged_in){
-                this.props.handleLogin(resp.data)
+        .then(resp => resp.json())
+        .then(json => { 
+            if (json.logged_in){
+                this.props.handleLogin(json)
             } else {
                 this.setState({
-                    errors: resp.data.erros
+                    errors: json.erros
                 })
             }
         })
-        .catch(error => console.log('api errors:', error))
+        .catch(error => console.log('handlesubmit() api errors:', error))
         this.setRedirect()
     }
 

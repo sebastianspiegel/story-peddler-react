@@ -18,7 +18,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount() {
-    // this.loginStatus()
+    this.loginStatus()
   }
 
   handleLogin = (data) => {
@@ -26,6 +26,7 @@ export default class App extends React.Component{
       isLoggedIn: true,
       user: data.user
     })
+    console.log("logged in")
   }
 
   handleLogout = () => {
@@ -37,16 +38,25 @@ export default class App extends React.Component{
 
   loginStatus = () => {
     fetch('http://localhost:3001/logged_in')    
-    .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
+    .then(resp => resp.json())
+    .then(json => {
+      if (json.logged_in) {
+        this.handleLogin(json)
         console.log("logged in")
       } else {
         this.handleLogout()
         console.log("logged out")
       }
     })
-    .catch(error => console.log('api errors:', error))
+    .catch(error => console.log('loginstatus() api errors:', error))
+  }
+
+  nameMe(){
+    if (this.state.logged_in) {
+      return this.state.user.username
+    } else {
+      return "no body"
+    }
   }
 
   render(){
@@ -54,9 +64,9 @@ export default class App extends React.Component{
       <div>
         <BrowserRouter>
           <Header />
+          <h3>{this.nameMe()} is logged in</h3>
           <Switch>
             <Route exact path='/' component={Home} />
-            {/* <Route exact path='/login' component={Login} /> */}
             <Route exact path='/login'>
               <Login handleLogin={this.handleLogin} />
             </Route>
