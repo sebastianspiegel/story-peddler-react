@@ -63,6 +63,10 @@
  .header {
   text-align: center;
  }
+
+ .new-form {
+    padding: 25px 100px 75px 100px;
+ }
  
  body {
    margin: 0;
