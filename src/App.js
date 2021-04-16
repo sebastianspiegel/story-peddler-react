@@ -24,12 +24,15 @@ export default class App extends React.Component{
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      user: data
     })
     console.log("logged in")
   }
 
   handleLogout = () => {
+
+    localStorage.clear()
+
     this.setState({
       isLoggedIn: false,
       user: {}
@@ -46,25 +49,15 @@ export default class App extends React.Component{
       })
       .then(resp => resp.json())
       .then(data => {
+        console.log(data)
         this.handleLogin(data)
       })
     }
-    // fetch('http://localhost:3001/logged_in')    
-    // .then(resp => resp.json())
-    // .then(json => {
-    //   if (json.logged_in) {
-    //     this.handleLogin(json)
-    //     console.log("logged in")
-    //   } else {
-    //     this.handleLogout()
-    //     console.log("logged out")
-    //   }
-    // })
-    // .catch(error => console.log('loginstatus() errors:', error))
   }
 
   nameMe(){
-    if (this.state.logged_in) {
+    console.log(this.state)
+    if (this.state.isLoggedIn) {
       return this.state.user.username
     } else {
       return "no body"
@@ -75,7 +68,7 @@ export default class App extends React.Component{
     return(
       <div>
         <BrowserRouter>
-          <Header />
+          <Header handleLogout={this.handleLogout}/>
           <h3>{this.nameMe()} is logged in</h3>
           <Switch>
             <Route exact path='/' component={Home} />

@@ -19,13 +19,16 @@ export default class Login extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
+
         const {username, password} = this.state
+
         const userInfo = {
             user: {
                 username: username,
                 password: password
             }
         }
+
         const configObj = {
             method: 'POST',
             headers: {
@@ -34,6 +37,7 @@ export default class Login extends React.Component{
             },
             body: JSON.stringify(userInfo)
         }
+
         fetch('http://localhost:3001/login', configObj)
         .then(resp => resp.json())
         .then(json => { 
@@ -46,6 +50,7 @@ export default class Login extends React.Component{
                 })
             }
         })
+
         .catch(error => console.log('handlesubmit() errors:', error))
         this.setRedirect()
     }
