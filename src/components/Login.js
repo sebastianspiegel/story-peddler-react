@@ -38,6 +38,7 @@ export default class Login extends React.Component{
         .then(resp => resp.json())
         .then(json => { 
             if (json.logged_in){
+                localStorage.setItem("token", json.jwt)
                 this.props.handleLogin(json)
             } else {
                 this.setState({
@@ -45,7 +46,7 @@ export default class Login extends React.Component{
                 })
             }
         })
-        .catch(error => console.log('handlesubmit() api errors:', error))
+        .catch(error => console.log('handlesubmit() errors:', error))
         this.setRedirect()
     }
 

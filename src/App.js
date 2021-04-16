@@ -37,18 +37,30 @@ export default class App extends React.Component{
   }
 
   loginStatus = () => {
-    fetch('http://localhost:3001/logged_in')    
-    .then(resp => resp.json())
-    .then(json => {
-      if (json.logged_in) {
-        this.handleLogin(json)
-        console.log("logged in")
-      } else {
-        this.handleLogout()
-        console.log("logged out")
-      }
-    })
-    .catch(error => console.log('loginstatus() api errors:', error))
+    const token = localStorage.getItem("token")
+    if(token){
+      fetch('http://localhost:3001/logged_in', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        this.handleLogin(data)
+      })
+    }
+    // fetch('http://localhost:3001/logged_in')    
+    // .then(resp => resp.json())
+    // .then(json => {
+    //   if (json.logged_in) {
+    //     this.handleLogin(json)
+    //     console.log("logged in")
+    //   } else {
+    //     this.handleLogout()
+    //     console.log("logged out")
+    //   }
+    // })
+    // .catch(error => console.log('loginstatus() errors:', error))
   }
 
   nameMe(){
