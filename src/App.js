@@ -55,21 +55,11 @@ export default class App extends React.Component{
     }
   }
 
-  nameMe(){
-    console.log(this.state)
-    if (this.state.isLoggedIn) {
-      return this.state.user.username
-    } else {
-      return "no body"
-    }
-  }
-
   render(){
     return(
       <div>
         <BrowserRouter>
-          <Header handleLogout={this.handleLogout}/>
-          <h3>{this.nameMe()} is logged in</h3>
+          <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/login'>

@@ -1,7 +1,14 @@
-import LoginButton from './Login'
-import LogoutButton from './Logout'
 
 export default function Header(props){
+
+    function button(){
+        if(props.isLoggedIn === true){
+            return <button className="btn btn-secondary" onClick={props.handleLogout}>Log out</button>
+        } else {
+            return <a href="/login" className="btn btn-secondary">Log in</a>
+        }
+    }
+
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -22,8 +29,7 @@ export default function Header(props){
                         </li>
                     </ul>
                     <li className="form-inline my-2 my-lg-0">
-                        {/* <button type="button" className="btn btn-outline-primary">Login</button> */}
-                        <button onClick={props.handleLogout}>Logout</button>
+                        {button()}
                     </li>
                 </div>
             </nav>
