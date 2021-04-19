@@ -87,7 +87,6 @@ export default class Login extends React.Component{
                 Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} /><br/>
                 Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /><br/>
                 <input type="submit" value="Log In" />
-                or <Link to='/signup'>Sign Up</Link>
                 </form>
             </div>
         )

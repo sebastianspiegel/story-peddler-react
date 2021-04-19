@@ -16,6 +16,12 @@ export default class App extends React.Component{
     user: {}
   }
 
+  home(){
+    if (this.state.isLoggedIn === false){
+      return <Home />
+    }
+  }
+
   componentDidMount() {
     this.loginStatus()
   }
@@ -45,13 +51,13 @@ export default class App extends React.Component{
         ...this.state,
         redirect: true
     })
-}
+  }
 
-renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/' />
-    }
-}
+  renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/' />
+      }
+  }
 
   loginStatus = () => {
     const token = localStorage.getItem("token")
@@ -75,8 +81,8 @@ renderRedirect = () => {
         <BrowserRouter>
         {this.renderRedirect()}
           <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
+          {this.home()}
           <Switch>
-            <Route exact path='/' component={Home} />
             <Route exact path='/login'>
               <Login handleLogin={this.handleLogin} />
             </Route>

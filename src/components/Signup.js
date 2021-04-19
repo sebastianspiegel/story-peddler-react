@@ -65,7 +65,6 @@ export default class Signup extends React.Component{
         }
     }
 
-
     handleErrors = () => {
         return (
             <div>
