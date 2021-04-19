@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { Redirect } from "react-router";
 
 export default class Signup extends React.Component{
@@ -41,8 +40,15 @@ export default class Signup extends React.Component{
         .then(resp => resp.json())
         .then(json => {
             console.log(json)
-            // this.props.handleLogin(resp.data)
-            // this.setRedirect()
+            if (json.success){
+                localStorage.setItem("token", json.jwt)
+                this.props.handleLogin(json)
+                this.setRedirect()
+            } else {
+                this.setState({
+                    errors: json.erros
+                })
+            }
         })
     }
 
@@ -75,6 +81,7 @@ export default class Signup extends React.Component{
     render(){
         return(
             <div>
+                {this.renderRedirect()}
                 <form onSubmit={this.handleSubmit}>
                     Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} /><br />
                     Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /><br />

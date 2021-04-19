@@ -1,12 +1,11 @@
 import './App.css';
 import React, { Component, useState } from 'react';
+import { Redirect } from "react-router";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios'
 import Header from './components/Header'
 import ShowStory from './components/Show-Story'
 import StoryContainer from './containers/storycontainer'
 import Login from './components/Login'
-import Logout from './components/Logout'
 import Signup from './components/Signup'
 import Home from './components/Home'
 
@@ -37,7 +36,22 @@ export default class App extends React.Component{
       isLoggedIn: false,
       user: {}
     })
+
+    this.setRedirect()
   }
+
+  setRedirect = () => {
+    this.setState({
+        ...this.state,
+        redirect: true
+    })
+}
+
+renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
+}
 
   loginStatus = () => {
     const token = localStorage.getItem("token")
@@ -59,6 +73,7 @@ export default class App extends React.Component{
     return(
       <div>
         <BrowserRouter>
+        {this.renderRedirect()}
           <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
           <Switch>
             <Route exact path='/' component={Home} />
