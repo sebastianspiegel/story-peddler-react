@@ -65,7 +65,7 @@ export default class App extends React.Component{
             <Route exact path='/login'>
               <Login handleLogin={this.handleLogin} />
             </Route>
-            <Route exact path='/signup' component={Signup} />
+            <Route exact path='/signup' component={Signup} handleLogin={this.handleLogin} />
             <Route path="/stories" component={StoryContainer} />
           </Switch>
         </BrowserRouter>

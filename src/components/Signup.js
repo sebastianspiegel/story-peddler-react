@@ -20,24 +20,30 @@ export default class Signup extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault()
         const {username, password, password_confirmation} = this.state
-        let user = {
-            username: username,
-            password: password,
-            password_confirmation: password_confirmation
-        }
-        axios.post('http://localhost:3001/users', {user})
-        .then(resp => {
-            if (resp.data.status === 'created'){
-                this.props.handleLogin(resp.data)
-                this.redirect()
-            } else {
-                this.setState({
-                    errors: resp.data.errors
-                })
+        let userInfo = {
+            user: {
+                username: username,
+                password: password,
+                password_confirmation: password_confirmation
             }
+        }
+
+        const configObj = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        }
+
+        fetch('http://localhost:3001/users', configObj)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json)
+            // this.props.handleLogin(resp.data)
+            // this.setRedirect()
         })
-        .catch(error => console.log('api errors:', error))
-        this.setRedirect()
     }
 
     setRedirect = () => {
