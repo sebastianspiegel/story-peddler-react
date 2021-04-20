@@ -25,7 +25,7 @@ export default function Header(props){
                             <a className="nav-link" href="/characters/new">Create a New Character</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="plotpoints/new">Create a New Plot Point</a>
+                            <a className="nav-link" href="/plotpoints/new">Create a New Plot Point</a>
                         </li>
                     </ul>
                     <li className="form-inline my-2 my-lg-0">

@@ -8,6 +8,9 @@ import StoryContainer from './containers/storycontainer'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Home from './components/Home'
+import NewStory from './components/New-Story'
+import NewCharacter from './components/NewCharacterForm'
+import NewPlotPoint from './components/NewPlotPointForm'
 
 export default class App extends React.Component{
 
@@ -19,6 +22,8 @@ export default class App extends React.Component{
   home(){
     if (this.state.isLoggedIn === false){
       return <Home />
+    } else {
+      return <StoryContainer />
     }
   }
 
@@ -89,7 +94,9 @@ export default class App extends React.Component{
             <Route exact path='/signup'>
               <Signup handleLogin={this.handleLogin} />
             </Route>
-            <Route path="/stories" component={StoryContainer} />
+            <Route exact path="/stories/new" component={NewStory} />
+            <Route exact path='/characters/new' component={NewCharacter} />
+            <Route exact path ='/plotpoints/new' component={NewPlotPoint} />
           </Switch>
         </BrowserRouter>
       </div>
