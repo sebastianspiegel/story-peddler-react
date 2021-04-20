@@ -44,12 +44,9 @@ export default class Login extends React.Component{
                 localStorage.setItem("token", json.jwt)
                 this.props.handleLogin(json)
             } else {
-                this.setState({
-                    errors: json.erros
-                })
+                alert(json.message)
             }
         })
-
         .catch(error => console.log('handlesubmit() errors:', error))
         this.setRedirect()
     }
@@ -67,17 +64,17 @@ export default class Login extends React.Component{
         }
     }
 
-    handleErrors = () => {
-        return (
-            <div>
-                <ul>
-                    {this.state.erros.map(error => {
-                        return <li key={error}>{error}</li>
-                    })}
-                </ul>
-            </div>
-        )
-    }
+    // handleErrors = () => {
+    //     return (
+    //         <div>
+    //             <ul>
+    //                 {this.state.erros.map(error => {
+    //                     return <li key={error}>{error}</li>
+    //                 })}
+    //             </ul>
+    //         </div>
+    //     )
+    // }
 
     render(){
         return(

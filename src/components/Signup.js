@@ -47,9 +47,7 @@ export default class Signup extends React.Component{
                 this.props.handleLogin(json)
                 this.setRedirect()
             } else {
-                this.setState({
-                    errors: json.erros
-                })
+                alert(json.message)
             }
         })
     }
@@ -67,17 +65,17 @@ export default class Signup extends React.Component{
         }
     }
 
-    handleErrors = () => {
-        return (
-            <div>
-                <ul>
-                    {this.state.erros.map(error => {
-                        return <li key={error}>{error}</li>
-                    })}
-                </ul>
-            </div>
-        )
-    }
+    // handleErrors = () => {
+    //     return (
+    //         <div>
+    //             <ul>
+    //                 {this.state.erros.map(error => {
+    //                     return <li key={error}>{error}</li>
+    //                 })}
+    //             </ul>
+    //         </div>
+    //     )
+    // }
 
     render(){
         return(
