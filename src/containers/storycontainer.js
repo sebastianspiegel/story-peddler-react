@@ -1,5 +1,5 @@
 import React from "react";
-import NewStory from '../components/New-Story'
+import StoryCard from '../components/StoryCard'
 
 export default class StoryContainer extends React.Component{
 
@@ -21,15 +21,17 @@ export default class StoryContainer extends React.Component{
     }
 
     makeStoryCards(){
+        this.getStories()
         if (this.state.loaded) {
-            
+            this.state.stories.map(story => <StoryCard key={story.id}/>)
         }
     }
 
     render(){
         return(
             <div>
-                {this.getStories()}
+                <h3>My stories:</h3>
+                {this.makeStoryCards()}
             </div>
         )
     }

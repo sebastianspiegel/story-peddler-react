@@ -36,7 +36,7 @@ export default class App extends React.Component{
       isLoggedIn: true,
       user: data
     })
-    console.log(data)
+
   }
 
   handleLogout = () => {
@@ -74,7 +74,6 @@ export default class App extends React.Component{
       })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data)
         this.handleLogin(data)
       })
     }
