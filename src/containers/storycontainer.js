@@ -8,7 +8,7 @@ export default class StoryContainer extends React.Component{
         loaded: false 
     }
 
-    getStories(){
+    componentDidMount(){
         let userId = this.props.user.id
         fetch(`http://127.0.0.1:3001/users/${userId}`)
         .then(resp => resp.json())
@@ -21,16 +21,14 @@ export default class StoryContainer extends React.Component{
     }
 
     makeStoryCards(){
-        this.getStories()
         if (this.state.loaded) {
-            this.state.stories.map(story => <StoryCard key={story.id}/>)
+            return this.state.stories.map(story => <StoryCard key={story.id} story={story}/>)
         }
     }
 
     render(){
         return(
             <div>
-                <h3>My stories:</h3>
                 {this.makeStoryCards()}
             </div>
         )
