@@ -23,7 +23,7 @@ export default class App extends React.Component{
     if (this.state.isLoggedIn === false){
       return <Home />
     } else {
-      return <StoryContainer />
+      return <StoryContainer user={this.state.user}/>
     }
   }
 
@@ -36,7 +36,7 @@ export default class App extends React.Component{
       isLoggedIn: true,
       user: data
     })
-    console.log("logged in")
+    console.log(data)
   }
 
   handleLogout = () => {
