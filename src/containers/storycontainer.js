@@ -22,8 +22,14 @@ export default class StoryContainer extends React.Component{
 
     makeStoryCards(){
         if (this.state.loaded) {
-            return this.state.stories.map(story => <StoryCard key={story.id} story={story}/>)
+            return this.state.stories.map(story => <StoryCard key={story.id} story={story} handleClick={this.handleClick}/>)
         }
+    }
+
+    handleClick = (e) => {
+        e.preventDefault()
+        console.log(e)
+        // onclick render story show page 
     }
 
     render(){
