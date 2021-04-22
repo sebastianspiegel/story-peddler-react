@@ -1,8 +1,8 @@
-export default function ShowStory(){
+export default function ShowStory(props){
     return(
         <div className="jumbotron">
             <div className="storyInfo">
-                <h1 className="display-3">Story Title Here</h1>
+                <h1 className="display-3">{props.story.title}</h1>
                 <h6>Genre here</h6>
                 <h5>Summary here.</h5>
             </div>

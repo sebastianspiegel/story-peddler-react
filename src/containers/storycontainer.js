@@ -1,5 +1,6 @@
 import React from "react";
 import StoryCard from '../components/StoryCard'
+import ShowStory from '../components/Show-Story'
 
 export default class StoryContainer extends React.Component{
 
@@ -28,7 +29,10 @@ export default class StoryContainer extends React.Component{
 
     handleClick = (e) => {
         e.preventDefault()
-        console.log(e.target)
+        let storyId = e.target.id
+        let story = this.state.stories.find(story => story.id == storyId)
+        console.log(story)
+        return <ShowStory story={story} />
         // onclick render story show page 
     }
 
