@@ -28,7 +28,7 @@ export default class StoryContainer extends React.Component{
 
     handleClick = (e) => {
         e.preventDefault()
-        console.log(e)
+        console.log(e.target)
         // onclick render story show page 
     }
 
