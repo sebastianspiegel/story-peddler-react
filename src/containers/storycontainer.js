@@ -1,6 +1,7 @@
 import React from "react";
 import StoryCard from '../components/StoryCard'
 import ShowStory from '../components/Show-Story'
+import {useHistory} from 'react-router-dom';
 
 export default class StoryContainer extends React.Component{
 
@@ -27,14 +28,15 @@ export default class StoryContainer extends React.Component{
         }
     }
 
-    handleClick = (e) => {
-        e.preventDefault()
-        let storyId = e.target.id
-        let story = this.state.stories.find(story => story.id == storyId)
-        console.log(story)
-        return <ShowStory story={story} />
-        // onclick render story show page 
-    }
+    // handleClick = (e) => {
+    //     e.preventDefault()
+    //     let storyId = e.target.id
+    //     let story = this.state.stories.find(story => story.id == storyId)
+    //     console.log(story)
+    //     this.setRedirect()
+    //     // return <ShowStory story={story} />
+    //     // onclick render story show page 
+    // }
 
     render(){
         return(

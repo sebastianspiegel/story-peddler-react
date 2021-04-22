@@ -94,6 +94,7 @@ export default class App extends React.Component{
               <Signup handleLogin={this.handleLogin} />
             </Route>
             <Route exact path="/stories/new" component={NewStory} />
+            <Route path="/stories/:id" component={ShowStory} />
             <Route exact path='/characters/new' component={NewCharacter} />
             <Route exact path ='/plotpoints/new' component={NewPlotPoint} />
           </Switch>
