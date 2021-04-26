@@ -1,38 +1,46 @@
-export default function ShowStory(props){
+import React from "react"
+import StoryJumbo from './StoryJumbo'
 
-    
+export default class ShowStory extends React.Component{
 
-    function componentDidMount(){
-        let storyId = this.props.match.params.id
-        console.log(storyId)
+    state = {
+        story: {},
+        loaded: false 
     }
 
-    return(
-        <div className="jumbotron">
-            <div className="storyInfo">
-                <h1 className="display-3">Story Title Here</h1>
-                <h6>Genre here</h6>
-                <h5>Summary here.</h5>
+
+    componentDidMount(){
+        let storyId = this.props.match.params.id
+        fetch(`http://127.0.0.1:3001/stories/${storyId}`)
+        .then(resp => resp.json())
+        .then(json => 
+            // if 404 show "story does not exist"
+            // if (json.error){
+            //     this.setState({
+            //         loaded: false
+            //     })
+            // } else {
+                this.setState({
+                    story: json,
+                    loaded: true
+                })
+            // }
+        )
+    }
+
+    showStory(){
+        if (this.state.loaded) {
+            return <StoryJumbo story={this.state.story}/>
+        } else {
+            return <h2>Loading...</h2>
+        }
+    }
+
+    render(){
+        return(
+            <div>
+                {this.showStory()}
             </div>
-            <hr className="my-4" />
-            <p>Characters:</p>
-            <ul className="list-group" >
-                <li className="list-group-item flex-column align-items-start">
-                    <div className="d-flex w-100 justify-content-between">
-                        <h5 className="mb-1">Character 1</h5>
-                    </div>
-                    <p className="mb-1">Character description here</p>
-                </li>
-            </ul>
-            <p className="lead">
-                <div className="list-group">
-                    <ol id="plot-points">
-                        <li className="list-group-item list-group-item-action active">Plot Points:</li>
-                    </ol>
-                </div>
-            </p>
-            <button className="btn btn-outline-primary">Edit</button>
-            <button className="btn btn-outline-danger">Delete</button>
-        </div>
-    )
+        )
+    }
 }
