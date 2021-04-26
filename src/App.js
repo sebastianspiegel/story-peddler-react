@@ -85,8 +85,11 @@ export default class App extends React.Component{
         <BrowserRouter>
         {this.renderRedirect()}
           <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
-          {this.home()}
+          
           <Switch>
+            <Route exact path='/'>
+              {this.home()}
+            </Route>
             <Route exact path='/login'>
               <Login handleLogin={this.handleLogin} />
             </Route>
