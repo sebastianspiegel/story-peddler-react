@@ -6,7 +6,7 @@ export default function NewStory(props){
                 <form>
                     Title: <input type="text" name="title" onChange={props.handleChange} /><br />
                     Genre: <input type="text" name="genre" onChange={props.handleChange} /><br />
-                    Summary: <textarea class="form-control" name="summary" onChange={props.handleChange} rows="3" onChange={props.handleChange} /><br />
+                    Summary: <textarea className="form-control" name="summary" onChange={props.handleChange} rows="3" onChange={props.handleChange} /><br />
                     <input className="btn btn-outline-primary" type="submit" value="Create New Story" />
                 </form>
             </fieldset>
