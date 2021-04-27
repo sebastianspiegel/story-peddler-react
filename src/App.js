@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useState } from 'react';
+import React from 'react';
 import { Redirect } from "react-router";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header'
