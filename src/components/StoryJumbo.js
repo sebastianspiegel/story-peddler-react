@@ -1,7 +1,14 @@
 export default function StoryJumbo(props){
 
     function characters(){
-        props.story.characters.map( c => <h5 className="mb-1">${c.name}</h5>)
+        return props.story.characters.map( c => 
+            <li className="list-group-item flex-column align-items-start">
+                <div className="d-flex w-100 justify-content-between">
+                    {c.name}
+                </div>
+                <p className="mb-1">{c.description}</p>
+            </li>
+        )
     }
 
     return(
@@ -15,12 +22,7 @@ export default function StoryJumbo(props){
             <hr className="my-4" />
             <p>Characters:</p>
             <ul className="list-group" >
-                <li className="list-group-item flex-column align-items-start">
-                    <div className="d-flex w-100 justify-content-between">
-                        {characters()}
-                    </div>
-                    <p className="mb-1">Character description here</p>
-                </li>
+                {characters()}
             </ul>
             <div className="lead">
                 <div className="list-group">
