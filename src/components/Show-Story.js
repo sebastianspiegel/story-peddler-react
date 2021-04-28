@@ -30,10 +30,14 @@ export default class ShowStory extends React.Component{
 
     showStory(){
         if (this.state.loaded) {
-            return <StoryJumbo story={this.state.story}/>
+            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete}/>
         } else {
             return <h2>Loading...</h2>
         }
+    }
+
+    handleDelete = () => {
+        console.log("delete")
     }
 
     render(){
