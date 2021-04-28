@@ -1,4 +1,7 @@
-export default class NewStory{
+import React from "react"
+import { Redirect } from "react-router";
+
+export default class NewStory extends React.Component{
 
     state = {
         title: '',
@@ -12,18 +15,19 @@ export default class NewStory{
         this.setState({
             [name]: value
         })
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         const {title, genre, summary} = this.state
+        const user_id = this.props.user.id
+        
         let storyInfo = {
             story: {
                 title: title,
                 genre: genre,
                 summary: summary,
-                user_id: this.props.user.id 
+                user_id: user_id
             }
         }
 
@@ -38,26 +42,28 @@ export default class NewStory{
         console.log(storyInfo)
         console.log(configObj)
 
-        // fetch(`http://localhost:3001/users/${id}/stories`, configObj)
-        // .then(resp => resp.json())
-        // .then(json => {
-        //     console.log(json)
-        //     if (json.success){
-        //         this.setRedirect()
-        //     } else {
-        //         alert(json.message)
-        //     }
-        // })
+        fetch(`http://localhost:3001/users/${user_id}/stories`, configObj)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json)
+            if (json.success){
+                this.setRedirect(json.story.id)
+            } else {
+                alert(json.message)
+            }
+        })
     }
 
-    setRedirect = () => {
+    setRedirect = (id) => {
         this.setState({
             ...this.state,
-            redirect: true
+            redirect: true,
+            story_id: id
         })
     }
 
     renderRedirect = () => {
+        const id = this.state.story_id
         if (this.state.redirect) {
           return <Redirect to='/' />
         }
