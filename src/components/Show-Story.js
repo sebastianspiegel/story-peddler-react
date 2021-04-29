@@ -1,5 +1,6 @@
 import React from "react"
 import StoryJumbo from './StoryJumbo'
+import { Redirect } from "react-router";
 
 export default class ShowStory extends React.Component{
 
@@ -51,11 +52,26 @@ export default class ShowStory extends React.Component{
         .then(json => 
             alert(json.message)
             )
+        this.setRedirect()
+    }
+
+    setRedirect = () => {
+        this.setState({
+            ...this.state,
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='/' />
+        }
     }
 
     render(){
         return(
             <div>
+                {this.renderRedirect()}
                 {this.showStory()}
             </div>
         )
