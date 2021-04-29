@@ -19,7 +19,6 @@ export default function StoryJumbo(props){
 
     return(
         <div className="jumbotron">
-            {console.log(props)}
             <div className="storyInfo">
                 <h1 className="display-3">{props.story.title}</h1>
                 <h6>{props.story.genre}</h6>
@@ -40,8 +39,8 @@ export default function StoryJumbo(props){
                 </div>
             </div>
             <br/>
-            <button onClick={props.handleDelete} className="btn btn-outline-primary">Edit</button>
-            <button className="btn btn-outline-danger">Delete</button>
+            <button className="btn btn-outline-primary">Edit</button>
+            <button onClick={props.handleDelete} className="btn btn-outline-danger">Delete</button>
         </div>
     )
 

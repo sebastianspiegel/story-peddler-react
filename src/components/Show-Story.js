@@ -37,7 +37,20 @@ export default class ShowStory extends React.Component{
     }
 
     handleDelete = () => {
-        console.log("delete")
+        const id = this.state.story.id
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        }
+
+        fetch(`http://localhost:3001/stories/${id}`, configObj)
+        .then(resp => resp.json())
+        .then(json => 
+            alert(json.message)
+            )
     }
 
     render(){
