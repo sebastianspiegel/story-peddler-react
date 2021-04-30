@@ -100,7 +100,9 @@ export default class App extends React.Component{
               <NewStory user={this.state.user}/>
             </Route>
             <Route path="/stories/:id" component={ShowStory} />
-            <Route exact path='/characters/new' component={NewCharacter} />
+            <Route exact path='/characters/new'>
+              <NewCharacter user={this.state.user} />
+            </Route>
             <Route exact path ='/plotpoints/new' component={NewPlotPoint} />
           </Switch>
         </BrowserRouter>
