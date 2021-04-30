@@ -19,6 +19,7 @@ export default class NewCharacter extends React.Component {
     }
 
     componentDidMount(){
+        // need to deal with if there are no stories belonging to user 
         const userId = this.props.user.id 
         fetch(`http://127.0.0.1:3001/users/${userId}/stories`)
         .then(resp => resp.json())

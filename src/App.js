@@ -103,7 +103,9 @@ export default class App extends React.Component{
             <Route exact path='/characters/new'>
               <NewCharacter user={this.state.user} />
             </Route>
-            <Route exact path ='/plotpoints/new' component={NewPlotPoint} />
+            <Route exact path ='/plotpoints/new'>
+              <NewPlotPoint user={this.state.user} />
+            </Route>
           </Switch>
         </BrowserRouter>
       </div>
