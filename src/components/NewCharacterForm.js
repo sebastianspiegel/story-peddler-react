@@ -32,7 +32,7 @@ export default class NewCharacter extends React.Component {
 
     setStories(){
         if(this.state.loaded){
-            return this.state.stories.data.map(s => <option name="story_id" value={s.id}>{s.attributes.title}</option>)
+            return this.state.stories.data.map(s => <option key={s.id} name="story_id" value={s.id}>{s.attributes.title}</option>)
         }
     }
 
@@ -41,7 +41,7 @@ export default class NewCharacter extends React.Component {
         const {name, description, story_id} = this.state
         
         let characterInfo = {
-            story: {
+            character: {
                 name: name,
                 description: description,
                 story_id: story_id
@@ -56,19 +56,20 @@ export default class NewCharacter extends React.Component {
             },
             body: JSON.stringify(characterInfo)
         }
-        console.log(characterInfo)
-        console.log(configObj)
+        // console.log(characterInfo)
+        // console.log(configObj)
 
-        // fetch(`http://localhost:3001/characters`, configObj)
-        // .then(resp => resp.json())
-        // .then(json => {
-        //     console.log(json)
-        //     if (json.success){
-        //         this.setRedirect()
-        //     } else {
-        //         alert(json.message)
-        //     }
-        // })
+        fetch(`http://localhost:3001/characters`, configObj)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json)
+            if (json.success){
+                alert(json.message)
+                this.setRedirect()
+            } else {
+                alert(json.message)
+            }
+        })
     }
 
     setRedirect = () => {
