@@ -31,7 +31,7 @@ export default class ShowStory extends React.Component{
 
     showStory(){
         if (this.state.loaded) {
-            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete}/>
+            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
         } else {
             return <h2>Loading...</h2>
         }
@@ -53,6 +53,10 @@ export default class ShowStory extends React.Component{
             alert(json.message)
             )
         this.setRedirect()
+    }
+
+    handleEdit = () => {
+        console.log("edit")
     }
 
     setRedirect = () => {

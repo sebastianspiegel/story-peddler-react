@@ -39,7 +39,7 @@ export default function StoryJumbo(props){
                 </div>
             </div>
             <br/>
-            <button className="btn btn-outline-primary">Edit</button>
+            <button onClick={props.handleEdit} className="btn btn-outline-primary">Edit</button>
             <button onClick={props.handleDelete} className="btn btn-outline-danger">Delete</button>
         </div>
     )
