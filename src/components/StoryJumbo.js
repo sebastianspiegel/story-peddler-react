@@ -17,6 +17,12 @@ export default function StoryJumbo(props){
         )
     }
 
+    function confirmDelete(){
+        if (window.confirm("Are you sure you want to delete this story and all related characters?")){
+            props.handleDelete();
+        }
+    }
+
     return(
         <div className="jumbotron">
             <div className="storyInfo">
@@ -40,7 +46,7 @@ export default function StoryJumbo(props){
             </div>
             <br/>
             <button onClick={props.handleEdit} className="btn btn-outline-primary">Edit</button>
-            <button onClick={props.handleDelete} className="btn btn-outline-danger">Delete</button>
+            <button onClick={confirmDelete} className="btn btn-outline-danger">Delete Story</button>
         </div>
     )
 

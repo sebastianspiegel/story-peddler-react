@@ -38,6 +38,7 @@ export default class ShowStory extends React.Component{
     }
 
     handleDelete = () => {
+        //need confirmation!! 
         const id = this.state.story.id
         const configObj = {
             method: 'DELETE',
