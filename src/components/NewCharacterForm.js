@@ -71,7 +71,6 @@ export default class NewCharacter extends React.Component {
                 alert(json.message)
             }
         })
-        //redirect not working
     }
 
     setRedirect = () => {
@@ -83,7 +82,9 @@ export default class NewCharacter extends React.Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-          return <Redirect to='/' />
+            //redirect to `/stories/#{this.state.story_id}`
+            //return <Redirect to='/stories/:story_id' />
+            return <Redirect to='/' />
         }
     }
 
