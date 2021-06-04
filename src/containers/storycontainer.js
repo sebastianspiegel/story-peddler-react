@@ -9,10 +9,12 @@ export default class StoryContainer extends React.Component{
     }
 
     componentDidMount(){
+        // needs turnary for when trying to fetch before getting props
         let userId = this.props.user.id
         fetch(`http://127.0.0.1:3001/users/${userId}`)
         .then(resp => resp.json())
         .then(json => 
+            // console.log(json)
             this.setState({
                 stories: json.stories,
                 loaded: true

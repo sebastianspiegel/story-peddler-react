@@ -53,6 +53,7 @@ export default class ShowStory extends React.Component{
             alert(json.message)
             )
         this.setRedirect()
+        //redirect still shows story until refreshed 
     }
 
     handleEdit = () => {

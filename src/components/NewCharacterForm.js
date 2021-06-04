@@ -71,6 +71,7 @@ export default class NewCharacter extends React.Component {
                 alert(json.message)
             }
         })
+        //redirect not working
     }
 
     setRedirect = () => {

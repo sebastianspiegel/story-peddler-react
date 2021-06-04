@@ -38,6 +38,7 @@ export default class Login extends React.Component{
         }
 
         fetch('http://localhost:3001/login', configObj)
+        // fetch('https://afternoon-scrubland-00791.herokuapp.com/login', configObj)
         .then(resp => resp.json())
         .then(json => { 
             if (json.logged_in){
@@ -45,6 +46,7 @@ export default class Login extends React.Component{
                 this.props.handleLogin(json)
             } else {
                 alert(json.message)
+                console.log(json)
             }
         })
         .catch(error => console.log('handlesubmit() errors:', error))
