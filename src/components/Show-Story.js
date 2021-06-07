@@ -1,6 +1,7 @@
 import React from "react"
 import StoryJumbo from './StoryJumbo'
 import { Redirect } from "react-router";
+import StoryEdit from './StoryEdit'
 
 export default class ShowStory extends React.Component{
 
