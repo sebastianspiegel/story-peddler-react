@@ -19,7 +19,7 @@ export default class StoryEdit extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(e)
+        console.log(this.state)
     }
 
     render(){
@@ -31,7 +31,7 @@ export default class StoryEdit extends React.Component{
                         Title: <input type="text" name="title" value={this.state.title} onChange={this.handleChange} /><br />
                         Genre: <input type="text" name="genre" value={this.state.genre} onChange={this.handleChange} /><br />
                         Summary: <textarea className="form-control" name="summary" value={this.state.summary} onChange={this.handleChange} rows="3" /><br />
-                        <input className="btn btn-outline-primary" type="submit" value="Create New Story" />
+                        <input className="btn btn-outline-primary" type="submit" value="Save Story" />
                     </form>
                 </fieldset>
             </div>

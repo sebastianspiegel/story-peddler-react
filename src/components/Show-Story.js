@@ -63,6 +63,10 @@ export default class ShowStory extends React.Component{
 
     handleEdit = () => {
         console.log("edit")
+        this.setState({
+            ...this.state,
+            editing: true
+        })
     }
 
     setRedirect = () => {
