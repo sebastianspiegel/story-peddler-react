@@ -7,7 +7,8 @@ export default class ShowStory extends React.Component{
 
     state = {
         story: {},
-        loaded: false 
+        loaded: false,
+        editing: false 
     }
 
 
@@ -31,7 +32,9 @@ export default class ShowStory extends React.Component{
     }
 
     showStory(){
-        if (this.state.loaded) {
+        if (this.state.editing) {
+            return <StoryEdit story={this.state.story} />
+        } else if (this.state.loaded) {
             return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
         } else {
             return <h2>Loading...</h2>
