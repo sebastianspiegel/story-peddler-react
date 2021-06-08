@@ -19,12 +19,62 @@ export default class StoryEdit extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
+
+        const {title, genre, summary, id} = this.state
+        
+        let storyInfo = {
+            story: {
+                title: title,
+                genre: genre,
+                summary: summary,
+                id: id
+            }
+        }
+
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(storyInfo)
+        }
+
+        fetch(`http://localhost:3001/stories/${this.props.story.id}`, configObj)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json)
+            if (json.success){
+                this.setRedirect(json.story.id)
+            } else {
+                alert(json.message)
+            }
+        })
+    }
+
+    // currently rendering just form for story information
+    // add in characters and plot points with edit buttons
+    // break down into seperate components? 
+
+    setRedirect = (id) => {
+        this.setState({
+            ...this.state,
+            redirect: true,
+            story_id: id
+        })
+    }
+
+    renderRedirect = () => {
+        const id = this.state.story_id
+        if (this.state.redirect) {
+          return <Redirect to='/' />
+        }
     }
 
     render(){
         return(
             <div className="new-form">
+                {this.renderRedirect()}
                 <fieldset>
                     <legend>Add a new story</legend>
                     <form onSubmit={this.handleSubmit}>
