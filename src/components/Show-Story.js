@@ -31,7 +31,7 @@ export default class ShowStory extends React.Component{
         )
     }
 
-    showStory(){
+    showStoryJumbo(){
         if (this.state.editing) {
             return <StoryEdit story={this.state.story} />
         } else if (this.state.loaded) {
@@ -86,7 +86,7 @@ export default class ShowStory extends React.Component{
         return(
             <div>
                 {this.renderRedirect()}
-                {this.showStory()}
+                {this.showStoryJumbo()}
             </div>
         )
     }

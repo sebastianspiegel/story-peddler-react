@@ -55,6 +55,7 @@ export default class StoryEdit extends React.Component{
     // currently rendering just form for story information
     // add in characters and plot points with edit buttons
     // break down into seperate components? 
+    // redirect goes to homepage, should go to story page 
 
     setRedirect = (id) => {
         this.setState({

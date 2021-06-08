@@ -29,6 +29,7 @@ export default function StoryJumbo(props){
                 <h1 className="display-3">{props.story.title}</h1>
                 <h6>{props.story.genre}</h6>
                 <h5>{props.story.summary}</h5>
+                <button onClick={props.handleEdit} className="btn btn-outline-primary">Edit</button>
             </div>
             <hr className="my-4" />
             <p>Characters:</p>
@@ -45,7 +46,6 @@ export default function StoryJumbo(props){
                 </div>
             </div>
             <br/>
-            <button onClick={props.handleEdit} className="btn btn-outline-primary">Edit</button>
             <button onClick={confirmDelete} className="btn btn-outline-danger">Delete Story</button>
         </div>
     )
