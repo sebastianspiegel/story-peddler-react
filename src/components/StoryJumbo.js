@@ -30,14 +30,14 @@ export default function StoryJumbo(props){
                 <h6>{props.story.genre}</h6>
                 <h5>{props.story.summary}</h5>
                 {/* Edit button for story info */}
-                <button onClick={props.handleStoryEdit} className="btn btn-outline-primary">Edit Story Info</button>
+                <button onClick={props.handleStoryEdit} className="btn btn-outline-primary btn-sm">Edit Story Info</button>
             </div>
             <hr className="my-4" />
             <p>Characters:</p>
             <ul className="list-group" >
                 {characters()}
             </ul>
-            <button onClick={props.handleCharEdit} className="btn btn-outline-primary">Edit Characters</button>
+            <button onClick={props.handleCharEdit} className="btn btn-outline-primary btn-sm">Edit Characters</button>
             <br/>
             <hr className="my-4" />
             <div className="lead">
@@ -47,10 +47,12 @@ export default function StoryJumbo(props){
                         {plotpoints()}
                     </ol>
                 </div>
-                <button onClick={props.handlePlotEdit} className="btn btn-outline-primary">Edit Plot Points</button>
+                <button onClick={props.handlePlotEdit} className="btn btn-outline-primary btn-sm">Edit Plot Points</button>
             </div>
             <br/>
-            <button onClick={confirmDelete} className="btn btn-outline-danger">Delete Story</button>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+                <button onClick={confirmDelete} className="btn btn-outline-danger btn-lg">Delete Story</button>
+            </div>
         </div>
     )
 
