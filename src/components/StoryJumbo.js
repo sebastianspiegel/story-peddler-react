@@ -47,6 +47,7 @@ export default function StoryJumbo(props){
                         {plotpoints()}
                     </ol>
                 </div>
+                <button onClick={props.handlePlotEdit} className="btn btn-outline-primary">Edit Plot Points</button>
             </div>
             <br/>
             <button onClick={confirmDelete} className="btn btn-outline-danger">Delete Story</button>

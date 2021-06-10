@@ -3,6 +3,7 @@ import StoryJumbo from './StoryJumbo'
 import { Redirect } from "react-router";
 import StoryEdit from './StoryEdit'
 import CharEdit from './CharEdit'
+import PlotEdit from './PlotEdit'
 
 export default class ShowStory extends React.Component{
 
@@ -39,8 +40,14 @@ export default class ShowStory extends React.Component{
             return <StoryEdit story={this.state.story} />
         } else if (this.state.editingChar) {
             return <CharEdit story={this.state.story} />
+        } else if (this.state.editingPlot) {
+            return <PlotEdit story={this.state.story} />
         } else if (this.state.loaded) {
-            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete} handleStoryEdit={this.handleEdit} handleCharEdit={this.handleCharEdit}/>
+            return <StoryJumbo story={this.state.story} 
+            handleDelete={this.handleDelete} 
+            handleStoryEdit={this.handleEdit} 
+            handleCharEdit={this.handleCharEdit}
+            handlePlotEdit={this.handlePlotEdit}/>
         } else {
             return <h2>Loading...</h2>
         }
@@ -79,6 +86,14 @@ export default class ShowStory extends React.Component{
         this.setState({
             ...this.state,
             editingChar: true
+        })
+    }
+
+    handlePlotEdit = () => {
+        console.log("plot point edit")
+        this.setState({
+            ...this.state,
+            editingPlot: true 
         })
     }
 
