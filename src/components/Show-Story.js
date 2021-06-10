@@ -2,13 +2,16 @@ import React from "react"
 import StoryJumbo from './StoryJumbo'
 import { Redirect } from "react-router";
 import StoryEdit from './StoryEdit'
+import CharEdit from './CharEdit'
 
 export default class ShowStory extends React.Component{
 
     state = {
         story: {},
         loaded: false,
-        editing: false 
+        editingStory: false,
+        editingChar: false,
+        editingPlot: false 
     }
 
 
@@ -32,10 +35,12 @@ export default class ShowStory extends React.Component{
     }
 
     showStoryJumbo(){
-        if (this.state.editing) {
+        if (this.state.editingStory) {
             return <StoryEdit story={this.state.story} />
+        } else if (this.state.editingChar) {
+            return <CharEdit story={this.state.story} />
         } else if (this.state.loaded) {
-            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
+            return <StoryJumbo story={this.state.story} handleDelete={this.handleDelete} handleStoryEdit={this.handleEdit} handleCharEdit={this.handleCharEdit}/>
         } else {
             return <h2>Loading...</h2>
         }
@@ -61,11 +66,19 @@ export default class ShowStory extends React.Component{
         //redirect still shows story until refreshed 
     }
 
-    handleEdit = () => {
-        console.log("edit")
+    handleStoryEdit = () => {
+        console.log("story info edit")
         this.setState({
             ...this.state,
-            editing: true
+            editingStory: true
+        })
+    }
+
+    handleCharEdit = () => {
+        console.log("character edit")
+        this.setState({
+            ...this.state,
+            editingChar: true
         })
     }
 
