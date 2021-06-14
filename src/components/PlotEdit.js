@@ -17,7 +17,7 @@ export default function PlotEdit({story}){
     return(
         <div>
             {plotPoints()}
-            <button className="btn btn-outline-info" onClick={() => history.push(`/stories/${story.id}`)}>Return to Story</button>
+            <button className="btn btn-outline-info" onClick={() => history.goBack()}>Return to Story</button>
         </div>
     )
 }
