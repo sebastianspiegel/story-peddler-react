@@ -54,7 +54,6 @@ export default class ShowStory extends React.Component{
     }
 
     handleDelete = () => {
-        //need confirmation!! 
         const id = this.state.story.id
         const configObj = {
             method: 'DELETE',
@@ -71,6 +70,7 @@ export default class ShowStory extends React.Component{
             )
         this.setRedirect()
         //redirect still shows story until refreshed 
+        //need to update state in story container 
     }
 
     handleStoryEdit = () => {

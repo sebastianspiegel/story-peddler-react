@@ -49,6 +49,8 @@ export default class App extends React.Component{
     })
 
     this.setRedirect()
+
+    //need to clear state in storycontainer 
   }
 
   setRedirect = () => {
