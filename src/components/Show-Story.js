@@ -36,6 +36,7 @@ export default class ShowStory extends React.Component{
     }
 
     showStoryJumbo(){
+        // move logic to render 
         if (this.state.editingStory) {
             return <StoryEdit story={this.state.story} />
         } else if (this.state.editingChar) {

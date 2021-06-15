@@ -15,15 +15,14 @@ import NewPlotPoint from './components/NewPlotPointForm'
 export default class App extends React.Component{
 
   state = {
-    isLoggedIn: false,
-    user: {}
+    user: null
   }
 
   home(){
-    if (this.state.isLoggedIn === false){
-      return <Home />
-    } else {
+    if (this.state.user){
       return <StoryContainer user={this.state.user}/>
+    } else {
+      return <Home />
     }
   }
 
@@ -33,7 +32,6 @@ export default class App extends React.Component{
 
   handleLogin = (data) => {
     this.setState({
-      isLoggedIn: true,
       user: data
     })
 
@@ -44,8 +42,7 @@ export default class App extends React.Component{
     localStorage.clear()
 
     this.setState({
-      isLoggedIn: false,
-      user: {}
+      user: null
     })
 
     this.setRedirect()
@@ -86,7 +83,7 @@ export default class App extends React.Component{
       <div>
         <BrowserRouter>
         {this.renderRedirect()}
-          <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
+          <Header handleLogout={this.handleLogout} isLoggedIn={true}/>
           
           <Switch>
             <Route exact path='/'>

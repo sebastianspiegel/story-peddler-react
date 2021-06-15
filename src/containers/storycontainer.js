@@ -4,8 +4,7 @@ import StoryCard from '../components/StoryCard'
 export default class StoryContainer extends React.Component{
 
     state = {
-        stories: {},
-        loaded: false 
+        stories: null
     }
 
     componentDidMount(){
@@ -14,16 +13,22 @@ export default class StoryContainer extends React.Component{
         fetch(`http://127.0.0.1:3001/users/${userId}`)
         .then(resp => resp.json())
         .then(json => 
-            // console.log(json)
             this.setState({
-                stories: json.stories,
-                loaded: true
+                stories: json.stories
             })
+            // {
+            // if (json.success){
+            //     this.setState({
+            //         stories: json.stories,
+            //         loaded: true
+            //     })
+            // }}
+            // console.log(json)
         )
     }
 
     makeStoryCards(){
-        if (this.state.loaded) {
+        if (this.state.stories) {
             return this.state.stories.map(story => <StoryCard key={story.id} story={story} handleClick={this.handleClick}/>)
         }
     }
@@ -31,7 +36,7 @@ export default class StoryContainer extends React.Component{
     render(){
         return(
             <div>
-                {this.makeStoryCards()}
+                {this.state.stories ? this.makeStoryCards() : "Loading..."}
             </div>
         )
     }
